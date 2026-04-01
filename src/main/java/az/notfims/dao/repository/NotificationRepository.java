@@ -1,4 +1,15 @@
 package az.notfims.dao.repository;
 
-public class NotificationRepository {
+import az.notfims.dao.entity.NotificationEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface NotificationRepository extends JpaRepository<NotificationEntity,Long> {
+
+  List<NotificationEntity> findByUserEntity_IdAndSeen(Long userEntityId, boolean seen);
+
 }
